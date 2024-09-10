@@ -53,7 +53,7 @@ def generate_launch_description():
       joystick,
       hardware,
       camera1,
-      # camera2,
+      camera2,
       passit,
       viz,
       #record
