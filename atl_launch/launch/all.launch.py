@@ -56,5 +56,5 @@ def generate_launch_description():
       camera2,
       passit,
       viz,
-      #record
+      record
    ])
