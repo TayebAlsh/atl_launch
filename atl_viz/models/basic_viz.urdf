@@ -29,7 +29,7 @@
 <!-- BODY  -->
   <link name="paravane">
     <visual>
-      <origin xyz="-5 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://atl_viz/meshes/fuselage_axis.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -46,7 +46,7 @@
   <joint name="joint0" type="floating">
     <parent link="boat"/>
     <child link="paravane"/>
-    <origin xyz="-5 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <limit upper="3.1415" lower="-3.1415" effort="30" velocity="5.0"/>
     <!-- <axis xyz="0 1 0"/> -->
   </joint>
