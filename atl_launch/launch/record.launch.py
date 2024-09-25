@@ -20,8 +20,8 @@ def generate_launch_description():
                  '/joy',
                  '/servos_input',
                  '/servos_feedback',
-                 '/cam1/camera/image_raw',
-                 '/cam2/camera/image_raw'
+                 '/cam1/camera/image_raw/compressed',  # Record compressed image topic for cam1
+                 '/cam2/camera/image_raw/compressed'   
                  ],
             output='screen'
         )
