@@ -22,7 +22,7 @@ def generate_launch_description():
             output="screen",
             remappings=[
                 ('in', '/cam2/image_raw'),
-                ('out', '/cam2/camera/image_raw/compressed')
+                ('out', '/cam2/camera/compressed')
             ],
             parameters=[{
                 'use_sim_time': LaunchConfiguration('use_sim_time', default='false'),

@@ -3,6 +3,9 @@ from launch_ros.actions import Node
 from launch.actions import SetEnvironmentVariable
 from launch.substitutions import LaunchConfiguration
 
+
+#To test camera 
+#gst-launch-1.0 udpsrc port=5600 ! application/x-rtp, encoding-name=H264 ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! autovideosink
 def generate_launch_description():
     return LaunchDescription([
         SetEnvironmentVariable(
@@ -28,7 +31,7 @@ def generate_launch_description():
             output="screen",
             remappings=[
                 ('in', '/cam1/camera/image_raw'),  # Subscribe to the correct raw image topic
-                ('out', '/cam1/camera/image_raw/compressed')  # The default compressed topic
+                ('out', '/cam1/camera/compressed')  # The default compressed topic
             ],
             parameters=[{
                 'use_sim_time': LaunchConfiguration('use_sim_time', default='false'),
