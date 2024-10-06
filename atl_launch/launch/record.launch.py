@@ -5,7 +5,7 @@ from datetime import datetime
 def generate_launch_description():
     # Generate a unique directory name based on the current date and time
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_dir = os.path.expanduser(f'/mnt/usb-Seagate_Expansion_NA49JSPX-0:0-part1/ROSBAG/rosbag_{timestamp}')
+    output_dir = os.path.expanduser(f'~/ROSBAGS/rosbag_{timestamp}')
 
     return launch.LaunchDescription([
         launch.actions.ExecuteProcess(
@@ -20,8 +20,8 @@ def generate_launch_description():
                  '/joy',
                  '/servos_input',
                  '/servos_feedback',
-                 '/cam1/camera/compressed',  # Record compressed image topic for cam1
-                 '/cam2/camera/compressed'   
+                 '/cam1/camera/image_raw/compressed',  # Record compressed image topic for cam1
+                 '/cam2/camera/image_raw/compressed',   
                  ],
             output='screen'
         )
