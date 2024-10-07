@@ -1,19 +1,23 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
-from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 def generate_launch_description():
 
     return LaunchDescription([
-        SetEnvironmentVariable(name='GSCAM_CONFIG', value='udpsrc port=5601 ! application/x-rtp, encoding-name=H264 ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert'),
+
+        # GSCam Node for camera 2 (using ROS parameter)
         Node(
             package="gscam",
             executable="gscam_node",
             namespace='cam2',
             name="gscam2",
             output="screen",
+            parameters=[{
+                'gscam_config': 'udpsrc port=5601 ! application/x-rtp, encoding-name=H264 ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert'
+            }]
         ),
+
+        # Image Transport Node to republish and compress image from /cam2/image_raw
         Node(
             package="image_transport",
             executable="republish",
@@ -25,9 +29,9 @@ def generate_launch_description():
                 ('out', '/cam2/camera/compressed')
             ],
             parameters=[{
-                'use_sim_time': LaunchConfiguration('use_sim_time', default='false'),
+                'use_sim_time': 'false',
                 'compressed/format': 'jpeg',
-                'compressed/jpeg_quality': 10  # Set quality to 50%
+                'compressed/jpeg_quality': 10  # JPEG quality
             }]
         )
     ])
