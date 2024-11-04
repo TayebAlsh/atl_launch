@@ -49,6 +49,12 @@ def generate_launch_description():
          '/pass.launch.py'])
    )
 
+   ai_launch = IncludeLaunchDescription(
+      PythonLaunchDescriptionSource([os.path.join(
+         get_package_share_directory('atl_launch'), 'launch'),
+         '/ai.launch.py'])
+    )
+
    return LaunchDescription([
       joystick,
       hardware,
@@ -56,5 +62,6 @@ def generate_launch_description():
       camera2,
       passit,
       viz,
-      record
+      record,
+      ai_launch
    ])
